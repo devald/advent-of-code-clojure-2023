@@ -35,9 +35,17 @@ clj -M src/day1/part1.clj
 
 Replace `src/day1/part1.clj` with the path to the solution file you want to run.
 
+## Running Tests
+
+To run all tests, use
+
+```bash
+clj -X:test
+```
+
 ## Legal
 
-Please note that while the solutions provided here are my own work, the input data used to test these solutions is not from the original Advent of Code challenges. I have generated my own input data to ensure that I am not sharing any copyrighted material from the Advent of Code website. Feel free to try out the solutions with your own input data.
+Please note that while the solutions provided here are my own work, the input data used to test these solutions has been engineered using AI and prompt engineering techniques. This ensures that I am not sharing any copyrighted material from the original Advent of Code challenges. Feel free to try out the solutions with your own input data.
 
 ## Contributions
 

@@ -1,5 +1,6 @@
 (ns day1.part2
-  (:require [clojure.string :as str]))
+  (:require [clojure.string :as str]
+            [day1.common :as day1-common]))
 
 (def word-number-mappings
   (list
@@ -21,24 +22,24 @@
     #"eight" "8"
     #"nine" "9"))
 
-(defn word-to-number [string]
+(defn convert-word-to-number
+  "This function converts numeric words (e.g., 'one', 'two') within a string
+  into their corresponding numerical digits (e.g., '1', '2')."
+  [string]
   (let [replacement-list (partition 2 word-number-mappings)]
     (reduce #(apply str/replace %1 %2) string replacement-list)))
 
-(defn process-line [line]
-  (when-let [matches (re-seq #"\d" line)]
-    (let [first-digit (first matches)
-          last-digit (last matches)
-          two-digit (str first-digit last-digit)]
-      (read-string two-digit))))
-
-(defn read-file-and-process [file-path]
+(defn read-file-and-sum
+  "This function reads the content of a file, converts any numeric words within the string
+  into their corresponding numerical digits, and then performs a two-digit extraction.
+  Finally, it sums up the resulting numbers."
+  [file-path]
   (->>
     (slurp file-path)
-    (word-to-number)
+    (convert-word-to-number)
     (str/split-lines)
-    (map process-line)
+    (map day1-common/extract-first-last-digits)
     (reduce +)))
 
 (println
-  (read-file-and-process "src/day1/input.txt"))
+  (read-file-and-sum "src/day1/input.txt"))
