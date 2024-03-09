@@ -8,4 +8,4 @@
     (let [first-digit (first matches)
           last-digit (last matches)
           two-digit (str first-digit last-digit)]
-      (read-string two-digit))))
+      (parse-long two-digit))))
