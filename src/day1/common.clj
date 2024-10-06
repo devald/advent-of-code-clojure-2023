@@ -6,6 +6,6 @@
   [string]
   (when-let [matches (re-seq #"\d" string)]
     (let [first-digit (first matches)
-          last-digit (last matches)
-          two-digit (str first-digit last-digit)]
+          last-digit  (last matches)
+          two-digit   (str first-digit last-digit)]
       (parse-long two-digit))))
